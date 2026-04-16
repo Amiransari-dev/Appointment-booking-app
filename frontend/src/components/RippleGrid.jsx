@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import { useRef, useEffect } from 'react';
 import { Renderer, Program, Triangle, Mesh } from 'ogl';
 import './RippleGrid.css';
 
 const RippleGrid = ({
-   enableRainbow = false,
+  enableRainbow = false,
   gridColor = '#ffffff',
   rippleIntensity = 0.05,
   gridSize = 10.0,
@@ -179,7 +180,7 @@ void main() {
       if (!mouseInteraction || !containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width;
-      const y = 1.0 - (e.clientY - rect.top) / rect.height; // Flip Y coordinate
+      const y = 1.0 - (e.clientY - rect.top) / rect.height;
       targetMouseRef.current = { x, y };
     };
 
@@ -272,6 +273,37 @@ void main() {
   ]);
 
   return <div ref={containerRef} className="ripple-grid-container" />;
+};
+
+// ====================== PROPTYPES ======================
+RippleGrid.propTypes = {
+  enableRainbow: PropTypes.bool,
+  gridColor: PropTypes.string,
+  rippleIntensity: PropTypes.number,
+  gridSize: PropTypes.number,
+  gridThickness: PropTypes.number,
+  fadeDistance: PropTypes.number,
+  vignetteStrength: PropTypes.number,
+  glowIntensity: PropTypes.number,
+  opacity: PropTypes.number,
+  gridRotation: PropTypes.number,
+  mouseInteraction: PropTypes.bool,
+  mouseInteractionRadius: PropTypes.number,
+};
+
+RippleGrid.defaultProps = {
+  enableRainbow: false,
+  gridColor: '#ffffff',
+  rippleIntensity: 0.05,
+  gridSize: 10.0,
+  gridThickness: 15.0,
+  fadeDistance: 1.5,
+  vignetteStrength: 2.0,
+  glowIntensity: 0.1,
+  opacity: 1.0,
+  gridRotation: 0,
+  mouseInteraction: true,
+  mouseInteractionRadius: 1,
 };
 
 export default RippleGrid;

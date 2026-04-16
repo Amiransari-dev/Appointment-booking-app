@@ -1,31 +1,36 @@
+/* stylelint-disable */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ==================== Global Styles ==================== */
 * {
-    font-family: Outfit;
+    font-family: 'Outfit', sans-serif;
     color: rgb(0, 0, 0);
 }
+
 html, body, #root {
-  height: 100%;
+    height: 100%;
 }
 
 body {
-  background: transparent;
+    background: transparent;
 }
 
+/* ==================== Active State ==================== */
 .active hr {
-    @apply block
+    @apply block;
 }
 
-@media (max-width:740px) {
-    .active  p{
-       @apply text-white bg-primary
+@media (max-width: 740px) {
+    .active p {
+        @apply text-white bg-primary;
     }
 }
 
+/* ==================== Scrollbar ==================== */
 ::-webkit-scrollbar {
-    @apply hidden
+    @apply hidden;
 }
